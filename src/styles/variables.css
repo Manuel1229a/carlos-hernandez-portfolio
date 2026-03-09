@@ -1,0 +1,16 @@
+:root {
+  /* Paleta principal */
+  --primary: #0079BF;      
+  --secondary: #00B8D9;    
+  
+  /* Fondos */
+  --bg-main: #0F172A;       
+  --bg-card: #1E293B;      
+  
+  /* Textos */
+  --text-main: #F8FAFC;    
+  --text-muted: #94A3B8;   
+
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}

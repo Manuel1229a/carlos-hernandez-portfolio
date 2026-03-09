@@ -1,0 +1,36 @@
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--bg-card);
+  margin-top: 2rem;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -2.4rem;
+  top: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--bg-main);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  transition: border-color var(--transition-speed);
+}
+
+.timeline-item:hover .timeline-dot {
+  border-color: var(--secondary);
+}
+
+.timeline-content h3 {
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-content p {
+  color: var(--text-muted);
+}

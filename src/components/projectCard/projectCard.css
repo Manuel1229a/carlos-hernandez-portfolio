@@ -1,0 +1,38 @@
+.project-card {
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 4px 20px rgba(0, 184, 217, 0.1);
+}
+
+.project-title {
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.project-description {
+  color: var(--text-muted);
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.tech-badge {
+  background-color: rgba(0, 121, 191, 0.1);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
