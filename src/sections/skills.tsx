@@ -1,6 +1,6 @@
 // src/sections/Skills.tsx
 import React from 'react';
-import '../styles/Skills.css';
+import './Skills.css';
 
 const skills: string[] = ['Python', '.NET', 'React', 'AWS', 'PostgreSQL', 'Flutter'];
 

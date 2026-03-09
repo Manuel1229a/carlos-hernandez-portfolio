@@ -1,4 +1,4 @@
-import '../styles/Hero.css'; 
+import './Hero.css'; 
 
 const Hero = () => {
   return (
@@ -16,7 +16,7 @@ const Hero = () => {
         </p>
         
         <div className="hero-actions">
-          <a href="#projects" className="btn btn-primary">Ver proyectos</a>
+          <a href="src\assets\pdf\CV.pdf" className="btn btn-primary">Ver proyectos</a>
           <a href="/cv_carlos_hernandez.pdf" className="btn btn-secondary" download>Descargar CV</a>
         </div>
       </div>

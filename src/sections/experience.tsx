@@ -1,6 +1,6 @@
 // src/sections/Experience.tsx
 import React from 'react';
-import '../styles/Experience.css';
+import './Experience.css';
 
 const experiences = [
   { id: 1, company: 'CROEM', role: 'Software Engineer' },

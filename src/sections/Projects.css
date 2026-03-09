@@ -1,0 +1,13 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Aseguramos que las cards se vean premium */
+.projects-grid .project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

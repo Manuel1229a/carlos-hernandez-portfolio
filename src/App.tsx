@@ -1,18 +1,29 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
-import Projects from "./pages/Project"
-import ProjectDetail from "./pages/ProjectDetails"
+import React from 'react';
+import Navbar from './components/navbar/Navbar';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Skills from './sections/Skills';
+import Projects from './sections/Projects';
+import Experience from './sections/Experience';
+import Contact from './sections/Contact';
+import Footer from './components/footer/Footer';
+import './styles/global.css';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<ProjectDetail />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
+    <div className="app-wrapper">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
-export default App
+export default App;

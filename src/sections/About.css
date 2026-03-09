@@ -1,0 +1,16 @@
+.about-content {
+  max-width: 800px;
+}
+
+.about-content p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+/* Un toque de énfasis para palabras clave */
+.about-content p strong {
+  color: var(--secondary);
+  font-weight: 600;
+}
