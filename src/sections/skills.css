@@ -1,23 +1,88 @@
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
+.skills-section {
+  padding: 50px 0;
+  overflow: hidden; 
 }
 
-.skill-card {
-  background-color: var(--bg-card);
-  padding: 1rem;
-  text-align: center;
-  border-radius: var(--border-radius);
-  color: var(--text-main);
-  font-weight: 500;
+.sliders-wrapper {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.slider-container {
+  width: 100vw; 
+  height: 100px;
+  align-items: center;
+  overflow: visible; 
+  display: flex;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.slider-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-33.33% - 0.5rem)); } 
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(calc(-33.33% - 0.5rem)); }
+  100% { transform: translateX(0); }
+}
+
+.slider-track.left {
+  animation: scrollLeft 40s linear infinite;
+}
+
+.slider-track.right {
+  animation: scrollRight 45s linear infinite;
+}
+
+.skill-badge {
+  background: var(--bg-card);
+  padding: 1rem; 
+  border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 220px; 
+  height: 60px; 
+  flex-shrink: 0; 
 }
 
-.skill-card:hover {
+.skill-badge:hover {
   border-color: var(--secondary);
-  color: var(--secondary);
-  transform: translateY(-2px);
+  background: rgba(0, 184, 217, 0.08);
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skill-icon {
+  font-size: 1.6rem;
+  color: var(--primary);
+  flex-shrink: 0;
+  display: contents;
+}
+
+.skill-name {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }

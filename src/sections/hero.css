@@ -1,10 +1,11 @@
 .hero-container {
-  min-height: 100vh;
+  /* Cambiamos min-height por padding para unificar con las otras secciones */
+  padding: 160px 10% 80px 10%; 
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 10%;
 }
+
 
 .hero-title {
   font-size: 4rem;
@@ -73,7 +74,7 @@
 
 @media (max-width: 600px) {
   .hero-container {
-    padding: 0 5%;
+    padding: 120px 5% 60px 5%;
   }
 
   .hero-title {

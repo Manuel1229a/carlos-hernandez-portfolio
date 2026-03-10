@@ -20,9 +20,9 @@ a {
 }
 
 .section-container {
-  padding: 80px 10%;
-  max-width: 1200px;
+  padding: 80px 10%; 
   margin: 0 auto;
+  overflow: hidden; 
 }
 
 .section-title {
@@ -46,5 +46,5 @@ a {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Evita que la navbar tape el título de la sección */
+  scroll-padding-top: 80px;
 }
