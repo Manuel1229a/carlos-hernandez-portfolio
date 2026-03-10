@@ -18,7 +18,7 @@ export const projects: Project[] = [
     id: 2,
     title: "Mydsa",
     description: "Dashboard de administración y gestión financiera para el control integral de gastos corporativos.",
-    tech: ["React", ".NET"],
+    tech: ["React", "TypeScript"],
     featured: true
   },
   {

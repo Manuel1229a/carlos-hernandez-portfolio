@@ -10,8 +10,8 @@
 
 .navbar.scrolled {
   padding: 1rem 10%;
-  background: rgba(15, 23, 42, 0.8); 
-  backdrop-filter: blur(12px); 
+  background: rgba(15, 23, 42, 0.8); /* Fondo oscuro con transparencia */
+  backdrop-filter: blur(12px); /* Efecto Glassmorphism */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 

@@ -43,3 +43,8 @@ a {
   height: 4px;
   background-color: var(--primary);
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Evita que la navbar tape el título de la sección */
+}

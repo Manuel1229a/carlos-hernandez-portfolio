@@ -2,7 +2,7 @@
 import React from 'react';
 import './Skills.css';
 
-const skills: string[] = ['Python', '.NET', 'React', 'AWS', 'PostgreSQL', 'Flutter'];
+const skills: string[] = ['Python', '.NET', 'React', 'AWS', 'PostgreSQL', 'TypeScript', 'React Native', 'Expo', 'SQLite', 'Vite'];
 
 const Skills: React.FC = () => {
   return (

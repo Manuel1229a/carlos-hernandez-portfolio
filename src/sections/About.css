@@ -9,7 +9,6 @@
   line-height: 1.8;
 }
 
-/* Un toque de énfasis para palabras clave */
 .about-content p strong {
   color: var(--secondary);
   font-weight: 600;
