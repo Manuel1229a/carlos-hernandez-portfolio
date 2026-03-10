@@ -69,8 +69,6 @@
   color: var(--text-main) !important;
 }
 
-/* ... Tus estilos anteriores se mantienen igual hasta llegar a .navbar-logo ... */
-
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: 800;
@@ -79,10 +77,9 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  text-decoration: none; /* Quitamos subrayado por ser un link */
+  text-decoration: none; 
 }
 
-/* Estilos del menú hamburguesa (oculto en desktop) */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -98,7 +95,6 @@
   transition: all 0.3s ease;
 }
 
-/* Animación de la hamburguesa a X */
 .menu-toggle.active .bar:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -119,7 +115,7 @@
   .navbar-links {
     position: fixed;
     top: 0;
-    right: -100%; /* Oculto inicialmente */
+    right: -100%;
     width: 70%;
     height: 100vh;
     background: var(--bg-main);
