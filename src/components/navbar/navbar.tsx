@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
       <div className="navbar-container">
         {/* Logo con link al inicio */}
         <a href="#" className="navbar-logo" onClick={closeMenu}>
-          <span className="logo-dot"></span> CH
+          <span className="logo-dot"></span> Carlos Hernández
         </a>
 
         {/* Botón hamburguesa */}
