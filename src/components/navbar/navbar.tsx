@@ -3,6 +3,7 @@ import './Navbar.css';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,18 +13,31 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <div className="navbar-logo">
+        {/* Logo con link al inicio */}
+        <a href="#" className="navbar-logo" onClick={closeMenu}>
           <span className="logo-dot"></span> CH
+        </a>
+
+        {/* Botón hamburguesa */}
+        <div className={`menu-toggle ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </div>
-        <ul className="navbar-links">
-          <li><a href="#about">Sobre mí</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Proyectos</a></li>
-          <li><a href="#experience">Experiencia</a></li>
-          <li><a href="#contact" className="nav-cta">Contacto</a></li>
+
+        {/* Links con clase condicional para móvil */}
+        <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
+          <li><a href="#about" onClick={closeMenu}>Sobre mí</a></li>
+          <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+          <li><a href="#projects" onClick={closeMenu}>Proyectos</a></li>
+          <li><a href="#experience" onClick={closeMenu}>Experiencia</a></li>
+          <li><a href="#contact" className="nav-cta" onClick={closeMenu}>Contacto</a></li>
         </ul>
       </div>
     </nav>

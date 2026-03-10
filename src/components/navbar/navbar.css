@@ -68,3 +68,74 @@
   background: var(--primary) !important;
   color: var(--text-main) !important;
 }
+
+/* ... Tus estilos anteriores se mantienen igual hasta llegar a .navbar-logo ... */
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none; /* Quitamos subrayado por ser un link */
+}
+
+/* Estilos del menú hamburguesa (oculto en desktop) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.bar {
+  width: 25px;
+  height: 2px;
+  background-color: var(--text-main);
+  transition: all 0.3s ease;
+}
+
+/* Animación de la hamburguesa a X */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Oculto inicialmente */
+    width: 70%;
+    height: 100vh;
+    background: var(--bg-main);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    transition: 0.4s ease;
+    box-shadow: -10px 0 20px rgba(0,0,0,0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .navbar-links.open {
+    right: 0;
+  }
+
+  .navbar-links a {
+    font-size: 1.2rem;
+  }
+}

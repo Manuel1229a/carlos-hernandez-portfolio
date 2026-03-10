@@ -70,3 +70,26 @@
   border-color: var(--text-main);
   background-color: rgba(255, 255, 255, 0.05);
 }
+
+@media (max-width: 600px) {
+  .hero-container {
+    padding: 0 5%;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    max-width: none;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+  }
+}
