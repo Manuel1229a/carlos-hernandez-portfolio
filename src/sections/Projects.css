@@ -135,6 +135,11 @@
   justify-content: center;
   z-index: 2000;
   padding: 2rem;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.exit {
+  opacity: 0;
 }
 
 .modal-content {
@@ -148,12 +153,16 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  animation: modalIn 0.3s ease-out forwards;
+  animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-content.exit {
+  animation: modalOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .modal-main-image {
   width: 100%;
-  min-height: 400px;
+  min-height: 370px;
   background: #000;
   display: flex;
   justify-content: center;
@@ -170,6 +179,206 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(1.02); }
   to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.9) translateY(30px); }
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 3rem;
+}
+
+.modal-meta-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.modal-meta-row span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-description-section h3, .modal-sidebar h3 {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contenedor del marco móvil */
+.mobile-frame-container {
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.1) 0%, transparent 70%);
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px !important;
+}
+
+.smartphone-wrapper {
+  position: relative;
+  width: 280px; /* Ancho estándar de un móvil en pantalla */
+  height: 580px;
+  background: #111;
+  border-radius: 40px;
+  border: 12px solid #1a1a24; /* El marco físico del cel */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+/* El "Notch" o camara superior */
+.smartphone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 25px;
+  background: #1a1a24;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 10;
+}
+
+.smartphone-screen {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* Permite que si la imagen es muy larga, se pueda ver un poco el scroll */
+  scrollbar-width: none;
+}
+
+.smartphone-screen::-webkit-scrollbar {
+  display: none;
+}
+
+.smartphone-screen img {
+  width: 100%;
+  height: auto; /* IMPORTANTE: Para que no se estire y mantenga su proporción */
+  display: block;
+}
+
+/* Ajuste para que los proyectos WEB no se vean mal con el nuevo layout */
+.modal-main-image:not(.mobile-frame-container) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-main-image-container {
+  position: relative; /* Para posicionar las flechas */
+  width: 100%;
+}
+
+.nav-modal-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  opacity: 0; /* Ocultas por defecto */
+}
+
+/* Aparecen cuando el mouse entra al contenedor de la imagen */
+.modal-main-image-container:hover .nav-modal-btn {
+  opacity: 1;
+}
+
+.nav-modal-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-modal-btn.prev { left: 1.5rem; }
+.nav-modal-btn.next { right: 1.5rem; }
+
+/* Si es móvil, ajustamos las flechas para que no choquen con el marco */
+.mobile-frame-container ~ .nav-modal-btn.prev { left: 5rem; }
+.mobile-frame-container ~ .nav-modal-btn.next { right: 5rem; }
+
+@media (max-width: 768px) {
+  .nav-modal-btn {
+    opacity: 1; /* Siempre visibles en móvil */
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* CAJA PROBLEMA/SOLUCIÓN */
+.problem-solution-box {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ps-item {
+  margin-bottom: 1.5rem;
+}
+
+.ps-item:last-child { margin-bottom: 0; }
+
+.ps-item h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.icon-p { color: #ff4d4d; } /* Rojo para problema */
+.icon-s { color: var(--secondary); } /* Aqua para solución */
+
+.ps-item p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* SIDEBAR */
+.modal-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  padding-left: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-sidebar {
+    border-left: none;
+    padding-left: 0;
+  }
+  .modal-main-image{
+    min-height: fit-content;
+  }
 }
 
 .modal-thumbnails {
