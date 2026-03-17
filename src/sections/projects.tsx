@@ -7,15 +7,17 @@ const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-
+  
+  // Índice para las imágenes de las cards (todas rotan al mismo tiempo)
+  const [cardImageIndex, setCardImageIndex] = useState(0);
+  // Índice para la imagen del modal
   const [activeImgIndex, setActiveImgIndex] = useState(0);
 
   const closeModal = () => {
-  setSelectedProject(null);
-  setActiveImgIndex(0); 
-};
+    setSelectedProject(null);
+    setActiveImgIndex(0);
+  };
 
-  // Función para el scroll manual
   const scroll = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
       const scrollAmount = 400;
@@ -26,20 +28,24 @@ const Projects: React.FC = () => {
     }
   };
 
-  // Lógica de Auto-scroll Infinito
+  // Lógica de Auto-scroll + Rotación de imágenes en cards
   useEffect(() => {
     const interval = setInterval(() => {
-      if (carouselRef.current && !isPaused && !selectedProject) {
-        const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-        
-        // Si llegamos casi al final, volvemos al inicio suavemente
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+      if (!isPaused && !selectedProject) {
+        // 1. Rotar imágenes de las cards (buscamos el máximo de imágenes entre proyectos para el loop)
+        setCardImageIndex((prev) => (prev + 1) % 3); // Ajusta el % según el promedio de fotos
+
+        // 2. Mover el carrusel
+        if (carouselRef.current) {
+          const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            carouselRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+          }
         }
       }
-    }, 3000); // Cambia cada 4 segundos
+    }, 3500); // Un poco más rápido para que se note el dinamismo
 
     return () => clearInterval(interval);
   }, [isPaused, selectedProject]);
@@ -60,80 +66,84 @@ const Projects: React.FC = () => {
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {projects.map((project) => (
-          <div key={project.id} className="project-card" onClick={() => setSelectedProject(project)}>
-            <div className="project-image-container">
-              {project.images ? (
-                <img src={project.images[0]} alt={project.title} className="project-image" />
-              ) : (
-                <div className="project-image-placeholder">{project.title.charAt(0)}</div>
-              )}
-            </div>
-            <div className="project-card-content">
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-short-desc">{project.shortDescription}</p>
-              <div className="project-tech-mini">
-                {project.tech.slice(0, 3).map((t, i) => (
-                  <span key={i} className="tech-dot">{t}</span>
-                ))}
+        {projects.map((project) => {
+          // Lógica para que no rompa si un proyecto tiene menos fotos que el índice actual
+          const imgToShow = project.images[cardImageIndex % project.images.length];
+
+          return (
+            <div key={project.id} className="project-card" onClick={() => setSelectedProject(project)}>
+              <div className="project-image-container">
+                {project.images?.length > 0 ? (
+                  <img 
+                    key={imgToShow} // La key dispara el fade-in
+                    src={imgToShow} 
+                    alt={project.title} 
+                    className="project-image fade-animation" 
+                  />
+                ) : (
+                  <div className="project-image-placeholder">{project.title.charAt(0)}</div>
+                )}
+              </div>
+              <div className="project-card-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-short-desc">{project.shortDescription}</p>
+                <div className="project-tech-mini">
+                  {project.tech.slice(0, 3).map((t, i) => (
+                    <span key={i} className="tech-dot">{t}</span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      {/* Modal / Ventana emergente */}
+      {/* Modal */}
       {selectedProject && (
-        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
+        <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-  <button className="close-modal-btn"onClick={closeModal}>
-    <FiX />
-  </button>
-  
-  {/* Visor de Imagen Principal */}
-  <div className="modal-main-image">
-    <img 
-      src={selectedProject.images[activeImgIndex]} 
-      alt={selectedProject.title} 
-      key={activeImgIndex} 
-    />
-  </div>
-
-  <div className="modal-body">
-    <div className="modal-header-info">
-      <h2>{selectedProject.title}</h2>
-      
-      {/* Miniaturas de la galería */}
-      {selectedProject.images.length > 1 && (
-        <div className="modal-thumbnails">
-          {selectedProject.images.map((img, idx) => (
-            <div 
-              key={idx} 
-              className={`thumb-item ${activeImgIndex === idx ? 'active' : ''}`}
-              onClick={() => setActiveImgIndex(idx)}
-            >
-              <img src={img} alt={`Preview ${idx}`} />
+            <button className="close-modal-btn" onClick={closeModal}><FiX /></button>
+            
+            <div className="modal-main-image">
+              <img 
+                src={selectedProject.images[activeImgIndex]} 
+                alt={selectedProject.title} 
+                key={activeImgIndex} // Dispara el fade-in en el modal
+                className="fade-animation"
+              />
             </div>
-          ))}
-        </div>
-      )}
-    </div>
 
-    <div className="modal-tech-list">
-      {selectedProject.tech.map((t, i) => (
-        <span key={i} className="tech-badge">{t}</span>
-      ))}
-    </div>
+            <div className="modal-body">
+              <div className="modal-header-info">
+                <h2>{selectedProject.title}</h2>
+                {selectedProject.images.length > 1 && (
+                  <div className="modal-thumbnails">
+                    {selectedProject.images.map((img, idx) => (
+                      <div 
+                        key={idx} 
+                        className={`thumb-item ${activeImgIndex === idx ? 'active' : ''}`}
+                        onClick={() => setActiveImgIndex(idx)}
+                      >
+                        <img src={img} alt={`Preview ${idx}`} />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-    <p className="modal-long-desc">{selectedProject.longDescription}</p>
-
-    {selectedProject.link && (
-      <a href={selectedProject.link} target="_blank" rel="noreferrer" className="modal-link-btn">
-        Explorar Proyecto <FiExternalLink />
-      </a>
-    )}
-  </div>
-</div>
+              <div className="modal-tech-list">
+                {selectedProject.tech.map((t, i) => (
+                  <span key={i} className="tech-badge">{t}</span>
+                ))}
+              </div>
+              <p className="modal-long-desc">{selectedProject.longDescription}</p>
+              {selectedProject.link && (
+                <a href={selectedProject.link} target="_blank" rel="noreferrer" className="modal-link-btn">
+                  Explorar Proyecto <FiExternalLink />
+                </a>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </section>
