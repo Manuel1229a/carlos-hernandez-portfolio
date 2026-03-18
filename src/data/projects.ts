@@ -5,13 +5,18 @@ export interface Project {
   shortDescription: string; 
   longDescription: string;  
   tech: string[];
-  images: string[];   //Resolución 1800 x 880       
+  images: string[];        
   featured: boolean;
-  link?: string;            // Opcional para GitHub o demo
+  links?: {
+    github?: string;      // Repo principal
+    githubBackend?: string; // Repo backend (opcional)
+    live?: string;        // Sitio desplegado
+  };         
   rol: string;
   year: number;
   problem: string;
   solution: string;
+
 }
 
 export const projects: Project[] = [
@@ -66,7 +71,10 @@ export const projects: Project[] = [
     images: ["./images/NahuiCore-WebSite/Imagen1.jpg","./images/NahuiCore-WebSite/Imagen2.png", "./images/NahuiCore-WebSite/Imagen3.png", "./images/NahuiCore-WebSite/Imagen4.png"],
     featured: false,
     rol:"Software Engenier",
-    link: "https://nahuicore.netlify.app",
+    links: {
+      github: "https://github.com/Manuel1229a/NahuiCore-WebSite",
+      live: "https://nahuicore.netlify.apphttps://nahuicore.com"
+    },
     year: 2026,
   },
   /*{
@@ -104,5 +112,9 @@ export const projects: Project[] = [
   featured: true,
   rol: "Full Stack Developer",
   year: 2026,
+  links: {
+    github: "https://github.com/Manuel1229a/GasControl_FrontEnd",
+    githubBackend: "https://github.com/Manuel1229a/GasControl_BackEnd",
+  },      
 }
 ];

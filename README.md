@@ -5,7 +5,7 @@ Portafolio personal donde presento mis proyectos de desarrollo de software, expe
 ## Tecnologías
 
 - React
-- JavaScript
+- TypeScrip
 - CSS
 - HTML
 - Vite
@@ -20,12 +20,9 @@ Portafolio personal donde presento mis proyectos de desarrollo de software, expe
 ## Proyectos destacados
 
 - Mydsa Management System
-- NahuiCore Finance
-- Document Processing API
+- NahuiCore WebSite
+- Gas control
 
-## Demo
-
-Próximamente.
 
 ## Instalación
 
