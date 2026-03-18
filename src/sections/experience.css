@@ -141,6 +141,30 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.recommendation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(139, 92, 246, 0.1); 
+  border: 1px solid #8B5CF6;
+  color: #8B5CF6;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.recommendation-link:hover {
+  background: #8B5CF6;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+}
+
 @media (max-width: 600px) {
   .experience-header {
     flex-direction: column;

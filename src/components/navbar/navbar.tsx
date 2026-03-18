@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
         {/* Links con clase condicional para móvil */}
         <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
           <li><a href="#about" onClick={closeMenu}>Sobre mí</a></li>
-          <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+          <li><a href="#skills" onClick={closeMenu}>Habilidades</a></li>
           <li><a href="#projects" onClick={closeMenu}>Proyectos</a></li>
           <li><a href="#experience" onClick={closeMenu}>Experiencia</a></li>
           <li><a href="#contact" className="nav-cta" onClick={closeMenu}>Contacto</a></li>

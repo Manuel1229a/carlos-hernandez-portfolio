@@ -15,7 +15,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  {
+  /*{
     id: 1,
     title: "Document Processing API",
     shortDescription: "API robusta para el procesamiento automatizado de documentos.",
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     link: "https://github.com/tu-usuario/repo",
     rol:"Software Engenier",
     year: 2026,
-  },
+  },*/
   {
     id: 2,
     title: "Mydsa Dashboard",
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     link: "https://nahuicore.netlify.app",
     year: 2026,
   },
-  {
+  /*{
   id: 5,
   title: "NahuiCore Finance",
   shortDescription: "Landing page corporativa para consultoría estratégica de software.",
@@ -81,5 +81,28 @@ export const projects: Project[] = [
     featured: false,
     rol:"Software Engenier",
     year: 2026,
+}*/
+{
+  id: 6,
+  title: "Gas-Control",
+  shortDescription: "Aplicación móvil para la gestión de clientes, pedidos y operaciones en distribución de gas.",
+  
+  longDescription: "Desarrollo de una aplicación móvil enfocada en la gestión operativa de distribuidores de gas. La plataforma permite administrar clientes, registrar pedidos y visualizar información clave en tiempo real. Está diseñada con una arquitectura cliente-servidor, integrando un backend con API REST y una interfaz móvil intuitiva para optimizar los procesos diarios de los operadores.",
+  
+  problem: "Los distribuidores de gas suelen gestionar sus operaciones de forma manual o con herramientas dispersas, lo que dificulta el control de clientes, pedidos y el seguimiento de ingresos.",
+  
+  solution: "Se desarrolló una aplicación centralizada que permite registrar clientes, gestionar pedidos y visualizar datos operativos desde un dispositivo móvil, mejorando la organización, reduciendo errores y facilitando la toma de decisiones.",
+  
+  tech: ["React Native", "Expo", "FastAPI", "SQLite", "Firebase"],
+  
+  images: [
+    "./images/Gas-control/Imagen1.jpeg",
+    "./images/Gas-control/Imagen2.jpeg",
+    "./images/Gas-control/Imagen3.jpeg"
+  ],
+  
+  featured: true,
+  rol: "Full Stack Developer",
+  year: 2026,
 }
 ];
