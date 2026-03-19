@@ -73,7 +73,7 @@ export const projects: Project[] = [
     rol:"Software Engenier",
     links: {
       github: "https://github.com/Manuel1229a/NahuiCore-WebSite",
-      live: "https://nahuicore.netlify.apphttps://nahuicore.com"
+      live: "https://nahuicore.netlify.app"
     },
     year: 2026,
   },

@@ -29,7 +29,7 @@ const experiences: ExperienceItem[] = [
     tech: [".Net", "SharePoint", "Azure DevOps", "Power BI", "Miro"],
     location: "México",
     type: "Tiempo completo / Educación Dual",
-    logo: "public/images/logos/croem_mexico_logo.jpg",
+    logo: "/images/logos/croem_mexico_logo.jpeg",
     recommendationLetter: "/docs/carta_recomendación_croem.pdf",
   },
   {
@@ -55,7 +55,7 @@ const experiences: ExperienceItem[] = [
     ],
     location: "México",
     type: "Tiempo completo / Educación Dual",
-    logo: "public/images/logos/oitic_logo.jpg",
+    logo: "/images/logos/oitic_logo.jpeg",
   },
   {
     id: 3,
@@ -77,7 +77,7 @@ const experiences: ExperienceItem[] = [
     ],
     location: "México",
     type: "Tiempo parcial / Freelance",
-    logo: "public/images/logos/liomet_ti_logo.jpg",
+    logo: "/images/logos/liomet_ti_logo.jpeg",
   },
 ];
 

@@ -40,12 +40,12 @@
   display: flex;
   gap: 2rem;
   overflow-x: auto;
-  /* Eliminamos scroll-snap-type momentáneamente para que el auto-scroll sea más fluido, 
-     o lo dejamos si prefieres que "encaje" en cada card */
   scroll-snap-type: x mandatory; 
   padding: 20px 0 40px 0;
   scrollbar-width: none;
   scroll-behavior: smooth;
+  justify-content: flex-start; 
+  align-items: center;
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -549,6 +549,17 @@
   }
 }
 
+@media (max-width: 480px) {
+  .project-image {
+    min-height: 200px;
+    max-height: 200px;
+  }
+  
+  .project-title {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 440px) {
   .close-modal-btn {
     top: 0.6rem;
@@ -558,6 +569,19 @@
     font-size: 1.2rem;
     background: rgba(0, 0, 0, 0.6); 
     backdrop-filter: blur(4px);
+  }
+
+  .project-card {
+    min-width: 75vw; 
+    max-width: 80vw;
+    margin: 0 auto;  
+    scroll-snap-align: center;
+  }
+
+  .carousel-container {
+    gap: 1rem; 
+    padding-left: 7.5vw; 
+    padding-right: 7.5vw;
   }
 
   .nav-modal-btn {
